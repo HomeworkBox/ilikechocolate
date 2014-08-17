@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F67231019A040E3005A2914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F67230F19A040E3005A2914 /* main.cpp */; };
 		2F67231819A04124005A2914 /* sorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F67231619A04124005A2914 /* sorting.cpp */; };
+		2FB1686F19A15C1A006EF66D /* sorting.h in Sources */ = {isa = PBXBuildFile; fileRef = 2F67231719A04124005A2914 /* sorting.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB1686F19A15C1A006EF66D /* sorting.h in Sources */,
 				2F67231819A04124005A2914 /* sorting.cpp in Sources */,
 				2F67231019A040E3005A2914 /* main.cpp in Sources */,
 			);

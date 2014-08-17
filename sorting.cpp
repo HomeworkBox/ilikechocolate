@@ -33,12 +33,39 @@ int insertion_sort(int *items, const int n) {
 // Merge Sort:
 
 int merge_sort(int *items, const int n) {
-    if (n<=6) {
+    if (n <= 6) {
         insertion_sort(items, n);
+        
     }
-    
+    merge_sortRecursive(items, n/2);
+    merge_sortRecursive(items + n/2, n/2);
 	return 1; // TODO
 }
+
+int merge_sortRecursive(int *items, const int n){
+    if (n <= 6) {
+        insertion_sort(items, n);
+        return 0;
+    }
+    if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
+        int j=0, k=n/2;
+        for (j=0 ; j<n/2; j++){
+            if (items[j] > items[ k ]) {
+                int temp = items[ k ];
+                for (int i=n/2-1 ; i>=0; i--){
+                    items[i+1]=items[i];
+                }
+                items[j]=temp;
+                k++;
+            }
+        }
+        
+    }
+    
+    
+    return 1;
+}
+
 
 // Quick Sort:
 

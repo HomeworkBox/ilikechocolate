@@ -7,6 +7,10 @@ int insertion_sort(int *items, const int n);
 
 int merge_sort(int *items, const int n);
 
+int merge_sortRecursive(int *items, const int n);
+
+//int merge_merge(int *items, const int n);
+
 int quick_sort(int *items, const int n);
 
 #endif // __SORTING_H__
