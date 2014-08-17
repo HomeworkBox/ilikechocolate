@@ -2,6 +2,7 @@
 // cs32 pa2
 
 #include <array>
+#include <typeinfo>
 using namespace std;
 
 
