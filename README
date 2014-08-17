@@ -17,8 +17,8 @@
  git clone https://github.com/tylerwowen/pa2.git
 4.submit to server
  #add everything
- git add .
+ #git add .
  #commit
- git commit -m "some comments"
+ git commit -am "some comments"
  git push origin master
 
