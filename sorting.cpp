@@ -1,7 +1,6 @@
 // Tyler Weimin Ouyang 2014-08-15
 // cs32 pa2
 
-#include <array>
 #include <typeinfo>
 using namespace std;
 
@@ -9,7 +8,7 @@ using namespace std;
 // Insertion Sort:
 int insertion_sort(int *items, const int n) {
 
-    if (n > 6 || n<0) {
+    if (n > 6 || n < 0 || items == NULL) {
         return 1;
     }
     int temp, i, j;
