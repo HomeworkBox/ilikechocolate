@@ -1,0 +1,19 @@
+1.set account
+ git config --global user.name "Your Name"
+ git config --global user.email you@example.com
+ git config --global push.default simple
+2.check
+ more ~/.gitconfig
+3.generate ssh key
+ ls -al ~/.ssh
+ #check key
+ #if no key
+ ssh-keygen -t rsa -C "your_email@example.com"
+ eval "$(ssh-agent -s)"
+ ssh-add ~/.ssh/id_rsa
+ cat ~/.ssh/id_rsa.pub
+ #than copy it into github
+3.go to a directory and clone
+ git clone https://github.com/tylerwowen/pa2.git
+4.submit to server
+ git push origin master
