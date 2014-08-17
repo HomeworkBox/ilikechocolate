@@ -33,6 +33,10 @@ int insertion_sort(int *items, const int n) {
 // Merge Sort:
 
 int merge_sort(int *items, const int n) {
+    if (n<=6) {
+        insertion_sort(items, n);
+    }
+    
 	return 1; // TODO
 }
 
