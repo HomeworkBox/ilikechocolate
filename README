@@ -16,4 +16,9 @@
 3.go to a directory and clone
  git clone https://github.com/tylerwowen/pa2.git
 4.submit to server
+ #add everything
+ git add .
+ #commit
+ git commit -m "some comments"
  git push origin master
+
