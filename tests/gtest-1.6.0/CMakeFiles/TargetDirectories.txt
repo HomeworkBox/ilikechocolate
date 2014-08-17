@@ -1,0 +1,2 @@
+/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/gtest.dir
+/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/gtest_main.dir

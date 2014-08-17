@@ -1,0 +1,57 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2460711512/fast"
+gmake[1]: Entering directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2460711512.dir/build.make CMakeFiles/cmTryCompileExec2460711512.dir/build
+gmake[2]: Entering directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2460711512.dir/CheckSymbolExists.c.o
+/usr/lib64/ccache/cc    -o CMakeFiles/cmTryCompileExec2460711512.dir/CheckSymbolExists.c.o   -c /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec2460711512
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2460711512.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc       CMakeFiles/cmTryCompileExec2460711512.dir/CheckSymbolExists.c.o  -o cmTryCompileExec2460711512 -rdynamic 
+CMakeFiles/cmTryCompileExec2460711512.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [cmTryCompileExec2460711512] Error 1
+gmake[2]: Leaving directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec2460711512/fast] Error 2
+gmake[1]: Leaving directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+
+File /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec399061234/fast"
+gmake[1]: Entering directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec399061234.dir/build.make CMakeFiles/cmTryCompileExec399061234.dir/build
+gmake[2]: Entering directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec399061234.dir/CheckFunctionExists.c.o
+/usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec399061234.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec399061234
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec399061234.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec399061234.dir/CheckFunctionExists.c.o  -o cmTryCompileExec399061234 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [cmTryCompileExec399061234] Error 1
+gmake[2]: Leaving directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec399061234/fast] Error 2
+gmake[1]: Leaving directory `/cs/student/ouyang/cs32/pa2/tests/gtest-1.6.0/CMakeFiles/CMakeTmp'
+
+

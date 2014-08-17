@@ -1,0 +1,33 @@
+// Tyler Weimin Ouyang 2014-08-15
+// cs32 pa2
+
+// Insertion Sort:
+
+int insertion_sort(int *items, const int n) {
+  int temp, i, j;
+  for (i=0; i<n; i++){
+    if (items[i] > items[i+1]) {
+      temp = item[i];
+      for (j=i-1; j=0; j--){
+	if(items[j] > temp){
+	  //int temp = item[i];
+	  item[i]=item[j];
+	  item[j]=temp;
+	}
+      }
+    }
+  }
+  return 0;
+}
+
+// Merge Sort:
+
+int merge_sort(int *items, const int n) {
+	return 1; // TODO
+}
+
+// Quick Sort:
+
+int quick_sort(int *items, const int n) {
+	return 1; // TODO
+}
