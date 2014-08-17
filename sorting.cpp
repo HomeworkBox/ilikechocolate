@@ -7,8 +7,8 @@ using namespace std;
 
 // Insertion Sort:
 int insertion_sort(int *items, const int n) {
-//    printf("size of items is %lu, and size of items[1] is %lu", sizeof items,sizeof items[1] );
-    if (n > 6) {
+
+    if (n > 6 || n<0) {
         return 1;
     }
     int temp, i, j;
