@@ -4,20 +4,20 @@
 // Insertion Sort:
 
 int insertion_sort(int *items, const int n) {
-  int temp, i, j;
-  for (i=0; i<n; i++){
-    if (items[i] > items[i+1]) {
-      temp = item[i];
-      for (j=i-1; j=0; j--){
-	if(items[j] > temp){
-	  //int temp = item[i];
-	  item[i]=item[j];
-	  item[j]=temp;
-	}
-      }
+    int temp, i, j;
+    for (i=0; i<n-1; i++){
+        if (items[i] > items[i+1]) {
+            temp = items[i+1];
+            for (j=i; j>=0; j--){
+                if(items[j] > temp){
+                    //int temp = item[i];
+                    items[j+1]=items[j];
+                    items[j]=temp;
+                }
+            }
+        }
     }
-  }
-  return 0;
+    return 0;
 }
 
 // Merge Sort:

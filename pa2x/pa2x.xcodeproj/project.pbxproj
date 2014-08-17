@@ -60,9 +60,9 @@
 		2F67230E19A040E3005A2914 /* pa2x */ = {
 			isa = PBXGroup;
 			children = (
+				2F67230F19A040E3005A2914 /* main.cpp */,
 				2F67231619A04124005A2914 /* sorting.cpp */,
 				2F67231719A04124005A2914 /* sorting.h */,
-				2F67230F19A040E3005A2914 /* main.cpp */,
 			);
 			path = pa2x;
 			sourceTree = "<group>";
@@ -238,6 +238,7 @@
 				2F67231519A040E3005A2914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
