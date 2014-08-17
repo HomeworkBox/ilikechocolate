@@ -1,6 +1,7 @@
 // Tyler Weimin Ouyang 2014-08-15
 // cs32 pa2
 
+#include <iostream>
 #include <typeinfo>
 using namespace std;
 
