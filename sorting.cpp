@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <typeinfo>
+#include "sorting.h"
 using namespace std;
 
 
@@ -14,9 +15,9 @@ int insertion_sort(int *items, const int n) {
     }
     int temp, i, j;
     for (i=0; i<n-1; i++){
-        if (typeid(items[i]) != typeid(int())) {
-            return 1;
-        }
+//        if (typeid(items[i]) != typeid(int())) {
+//            return 1;
+//        }
         if (items[i] > items[i+1]) {
             temp = items[i+1];
             for (j=i; j>=0; j--){
@@ -37,20 +38,36 @@ int merge_sort(int *items, const int n) {
         insertion_sort(items, n);
         
     }
-    merge_sortRecursive(items, n/2);
-    merge_sortRecursive(items + n/2, n/2);
+    if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
+        int j=0, k=n/2;
+        for (j=0 ; j<n/2; j++){
+            if (items[j] >= items[ k ]) {
+                int temp = items[ k ];
+                for (int i=n/2-1 ; i>=0; i--){
+                    items[i+1]=items[i];
+                }
+                items[j]=temp;
+                k++;
+            }
+        }
+        
+    }
+
 	return 1; // TODO
 }
 
 int merge_sortRecursive(int *items, const int n){
     if (n <= 6) {
         insertion_sort(items, n);
+        for (int z=0; z<n; z++)
+            cout << items[z] << " ";
+        cout << '\n';
         return 0;
     }
     if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
         int j=0, k=n/2;
         for (j=0 ; j<n/2; j++){
-            if (items[j] > items[ k ]) {
+            if (items[j] >= items[ k ]) {
                 int temp = items[ k ];
                 for (int i=n/2-1 ; i>=0; i--){
                     items[i+1]=items[i];
@@ -63,7 +80,7 @@ int merge_sortRecursive(int *items, const int n){
     }
     
     
-    return 1;
+    return 0;
 }
 
 
