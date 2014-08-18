@@ -51,7 +51,7 @@ int merge_sort(int *items, const int n) {
                     k++;
 //                for (int z=0; z<n; z++)
 //                    cout << items[z] << " ";
-//                cout << '\n';
+//                cout << '\n';// test output
             }
         }
         
