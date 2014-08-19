@@ -35,6 +35,9 @@ int insertion_sort(int *items, const int n) {
 // Merge Sort:
 
 int merge_sort(int *items, const int n) {
+    if (n < 0 || items == NULL) {
+        return 1;
+    }
     if (n <= 6) {
         insertion_sort(items, n);
         
@@ -79,7 +82,7 @@ int merge_sort(int *items, const int n) {
         }
     }
     
-	return 1;
+	return 0;
 }
 
 int merge_sortRecursive(int *items, const int n){
