@@ -9,15 +9,15 @@ using namespace std;
 
 // Insertion Sort:
 int insertion_sort(int *items, const int n) {
-
-    if (n > 6 || n < 0 || items == NULL) {
+    
+    if (n < 0 || items == NULL) {
         return 1;
     }
     int temp, i, j;
     for (i=0; i<n-1; i++){
-//        if (typeid(items[i]) != typeid(int())) {
-//            return 1;
-//        }
+        //        if (typeid(items[i]) != typeid(int())) {
+        //            return 1;
+        //        }
         if (items[i] > items[i+1]) {
             temp = items[i+1];
             for (j=i; j>=0; j--){
@@ -55,7 +55,7 @@ int merge_sort(int *items, const int n) {
             }
             
         }
-
+        
     }
     else{
         if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
@@ -77,16 +77,16 @@ int merge_sort(int *items, const int n) {
             
         }
     }
-
-	return 1; 
+    
+	return 1;
 }
 
 int merge_sortRecursive(int *items, const int n){
     if (n <= 6) {
         insertion_sort(items, n);
-        for (int z=0; z<n; z++)
-            cout << items[z] << " ";
-        cout << '\n';
+        //        for (int z=0; z<n; z++)
+        //            cout << items[z] << " ";
+        //        cout << '\n';
         return 0;
     }
     if (n%2 != 0) {
