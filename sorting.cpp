@@ -14,7 +14,8 @@ int insertion_sort(int *items, const int n) {
         return 1;
     }
     int temp, i, j;
-    for (i=0; i<n-1; i++){
+    int nn=n-1;
+    for (i=0; i<nn; i++){
         //        if (typeid(items[i]) != typeid(int())) {
         //            return 1;
         //        }
