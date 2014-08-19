@@ -10,9 +10,9 @@
 #include "sorting.h"
 
 int main(int argc, const char * argv[]) {
-    int testarray[]={4,1,2,3,0,9,4,13,89,17,6,54,5,2,42,41};
-    merge_sort(&testarray[0], 16);
-    for (int i=0; i<16; i++){
+    int testarray[]={4,1,2,3,0,9,4,13,89,17,6,54,5,2,42};
+    merge_sort(&testarray[0], 15);
+    for (int i=0; i<15; i++){
         std::cout << testarray[i]<<'\n';
     }
 //    std::cout << "1 for fail 0 for good\n"
