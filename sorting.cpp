@@ -95,6 +95,7 @@ int merge_sortRecursive(int *items, const int n){
     }
     if (n%2 != 0) {
         if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2+1) == 0 ) {
+            cout << n<< '\n';
             int j=0, k=n/2;
             for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
                 if (items[j] >= items[ k ]) {
@@ -114,6 +115,8 @@ int merge_sortRecursive(int *items, const int n){
     }
     else{
         if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
+            cout << n<< '\n';
+
             int j=0, k=n/2;
             for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
                 if (items[j] >= items[ k ]) {
