@@ -54,11 +54,11 @@ int merge_sort(int *items, const int n) {
                     items[j]=temp;
                     if (k<n-1) // before k could go out of the range
                         k++;
-                    
                 }
             }
             
         }
+        return 0;
         
     }
     else{
@@ -80,9 +80,10 @@ int merge_sort(int *items, const int n) {
             }
             
         }
+        return 0;
     }
     
-	return 0;
+	return 1;
 }
 
 int merge_sortRecursive(int *items, const int n){
@@ -111,6 +112,7 @@ int merge_sortRecursive(int *items, const int n){
             }
             
         }
+        return 0;
         
     }
     else{
@@ -133,10 +135,11 @@ int merge_sortRecursive(int *items, const int n){
             }
             
         }
+        return 0;
     }
     
     
-    return 0;
+    return 1;
 }
 
 
