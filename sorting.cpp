@@ -42,49 +42,49 @@ int merge_sort(int *items, const int n) {
         insertion_sort(items, n);
         
     }
-    int j,k, temp,nn;
+    int j,k,temp;
     if (n%2 != 0) {
-        if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2+1) == 0 ) {
-            j=0, k=n/2,nn=n-1;
-            for (j=0 ; j<nn; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-                if (items[j] >= items[ k ]) {
-                    temp = items[ k ];
-                    for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                        items[i+1]=items[i];
-                    }
-                    items[j]=temp;
-                    if (k<nn) // before k could go out of the range
-                        k++;
+        merge_sortRecursive(items, n/2);
+        merge_sortRecursive(items + n/2, n/2+1);
+        //cout << n<< '\n';
+        j=0, k=n/2;
+        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
+            if (items[j] >= items[ k ]) {
+                temp = items[ k ];
+                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
+                    items[i+1]=items[i];
                 }
+                items[j]=temp;
+                if (k<n-1) // before k could go out of the range
+                    k++;
+                
             }
-            
         }
-        return 0;
         
     }
     else{
-        if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
-            j=0, k=n/2, nn=n-1;
-            for (j=0 ; j<nn; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-                if (items[j] >= items[ k ]) {
-                    temp = items[ k ];
-                    for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                        items[i+1]=items[i];
-                    }
-                    items[j]=temp;
-                    if (k<nn) // before k could go out of the range
-                        k++;
-                    //                for (int z=0; z<n; z++)
-                    //                    cout << items[z] << " ";
-                    //                cout << '\n';// test output
+        merge_sortRecursive(items, n/2);
+        merge_sortRecursive(items + n/2, n/2);
+        //cout << n<< '\n';
+        j=0, k=n/2;
+        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
+            if (items[j] >= items[ k ]) {
+                temp = items[ k ];
+                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
+                    items[i+1]=items[i];
                 }
+                items[j]=temp;
+                if (k<n-1) // before k could go out of the range
+                    k++;
+                //                for (int z=0; z<n; z++)
+                //                    cout << items[z] << " ";
+                //                cout << '\n';// test output
             }
-            
         }
-        return 0;
+        
     }
     
-	return 1;
+	return 0;
 }
 
 int merge_sortRecursive(int *items, const int n){
@@ -95,53 +95,51 @@ int merge_sortRecursive(int *items, const int n){
         //        cout << '\n';
         return 0;
     }
-    int j,k,temp,nn;
+    int j,k,temp;
     if (n%2 != 0) {
-        if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2+1) == 0 ) {
-            //cout << n<< '\n';
-            j=0, k=n/2,nn=n-1;
-            for (j=0 ; j<nn; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-                if (items[j] >= items[ k ]) {
-                    temp = items[ k ];
-                    for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                        items[i+1]=items[i];
-                    }
-                    items[j]=temp;
-                    if (k<nn) // before k could go out of the range
-                        k++;
-                    
+        merge_sortRecursive(items, n/2);
+        merge_sortRecursive(items + n/2, n/2+1);
+        //cout << n<< '\n';
+        j=0, k=n/2;
+        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
+            if (items[j] >= items[ k ]) {
+                temp = items[ k ];
+                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
+                    items[i+1]=items[i];
                 }
+                items[j]=temp;
+                if (k<n-1) // before k could go out of the range
+                    k++;
+                
             }
-            
         }
-        return 0;
         
     }
     else{
-        if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
-            //cout << n<< '\n';
-            j=0, k=n/2, nn=n-1;
-            for (j=0 ; j<nn; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-                if (items[j] >= items[ k ]) {
-                    temp = items[ k ];
-                    for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                        items[i+1]=items[i];
-                    }
-                    items[j]=temp;
-                    if (k<nn) // before k could go out of the range
-                        k++;
-                    //                for (int z=0; z<n; z++)
-                    //                    cout << items[z] << " ";
-                    //                cout << '\n';// test output
+        merge_sortRecursive(items, n/2);
+        merge_sortRecursive(items + n/2, n/2);
+        //cout << n<< '\n';
+        j=0, k=n/2;
+        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
+            if (items[j] >= items[ k ]) {
+                temp = items[ k ];
+                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
+                    items[i+1]=items[i];
                 }
+                items[j]=temp;
+                if (k<n-1) // before k could go out of the range
+                    k++;
+                //                for (int z=0; z<n; z++)
+                //                    cout << items[z] << " ";
+                //                cout << '\n';// test output
             }
-            
         }
-        return 0;
+        
     }
     
     
-    return 1;
+    
+    return 0;
 }
 
 
