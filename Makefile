@@ -2,7 +2,7 @@ all: test perftest
 
 testdir = tests
 basefiles = sorting.cpp $(testdir)/tests_base.cpp
-gxxpaths = -I$(testdir)/gtest-1.6.0/include -L$(testdir)/gtest-1.6.0
+gxxpaths = -I$(testdir)/gtest-1.7.0/include -L$(testdir)/gtest-1.7.0
 gxxargs = $(gxxpaths) $(basefiles)
 libs = -lgtest -lpthread
 
@@ -26,8 +26,8 @@ bounds: test
 
 gtest:
 	cd $(testdir);\
-	unzip -o ./gtest-1.6.0.zip;\
-	cd ./gtest-1.6.0;\
+	unzip -o ./gtest-1.7.0.zip;\
+	cd ./gtest-1.7.0;\
 	./configure;\
 	make;\
 	cmake .;\

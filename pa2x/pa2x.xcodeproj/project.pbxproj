@@ -29,6 +29,7 @@
 		2F67230F19A040E3005A2914 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2F67231619A04124005A2914 /* sorting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sorting.cpp; path = ../../sorting.cpp; sourceTree = "<group>"; };
 		2F67231719A04124005A2914 /* sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sorting.h; path = ../../sorting.h; sourceTree = "<group>"; };
+		2FF4E34319A3FE8D000D1B1F /* sorting_perftests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sorting_perftests.cpp; path = ../../tests/sorting_perftests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 				2F67230F19A040E3005A2914 /* main.cpp */,
 				2F67231619A04124005A2914 /* sorting.cpp */,
 				2F67231719A04124005A2914 /* sorting.h */,
+				2FF4E34319A3FE8D000D1B1F /* sorting_perftests.cpp */,
 			);
 			path = pa2x;
 			sourceTree = "<group>";

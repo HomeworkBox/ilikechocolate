@@ -120,7 +120,7 @@ int merge_sortRecursive(int *items, const int n){
     else{
         if (merge_sortRecursive(items, n/2) + merge_sortRecursive(items + n/2, n/2) == 0 ) {
             //cout << n<< '\n';
-            j=0, k=n/2;
+            j=0, k=n/2, nn=n-1;
             for (j=0 ; j<nn; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
                 if (items[j] >= items[ k ]) {
                     temp = items[ k ];

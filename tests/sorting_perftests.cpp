@@ -35,7 +35,7 @@ TEST(insertion_sort_test, sorting_performance) {
 	sorting_performance_test(insertion_sort, "insertion sort", 50000, 2);
 }
 TEST(merge_sort_test, sorting_performance) {
-	sorting_performance_test(merge_sort, "merge sort", 10e+6, 4);
+	sorting_performance_test(merge_sort, "merge sort", 10e+4, 4);
 }
 TEST(quick_sort_test, sorting_performance) {
 	sorting_performance_test(quick_sort, "quick sort", 10e+6, 3);
