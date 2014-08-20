@@ -38,107 +38,56 @@ int merge_sort(int *items, const int n) {
     if (n < 0 || items == NULL) {
         return 1;
     }
-    if (n <= 6) {
+    else if (n <= 6) {
         insertion_sort(items, n);
-        
     }
-    int j,k,temp;
-    if (n%2 != 0) {
-        merge_sortRecursive(items, n/2);
-        merge_sortRecursive(items + n/2, n/2+1);
-        //cout << n<< '\n';
-        j=0, k=n/2;
-        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-            if (items[j] >= items[ k ]) {
-                temp = items[ k ];
-                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                    items[i+1]=items[i];
-                }
-                items[j]=temp;
-                if (k<n-1) // before k could go out of the range
-                    k++;
-                
-            }
-        }
-        
+    else if (n%2 != 0) {
+        merge_sortRecursive(items, n/2+1);
+        merge_sortRecursive(items + n/2+1, n/2);
+        merge (items, n, n/2+1);
     }
-    else{
+    else {
         merge_sortRecursive(items, n/2);
         merge_sortRecursive(items + n/2, n/2);
-        //cout << n<< '\n';
-        j=0, k=n/2;
-        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-            if (items[j] >= items[ k ]) {
-                temp = items[ k ];
-                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                    items[i+1]=items[i];
-                }
-                items[j]=temp;
-                if (k<n-1) // before k could go out of the range
-                    k++;
-                //                for (int z=0; z<n; z++)
-                //                    cout << items[z] << " ";
-                //                cout << '\n';// test output
-            }
-        }
-        
+        merge (items, n, n/2);
+
     }
-    
-	return 0;
+//    for (int z=0; z<n; z++)
+//        cout << items[z] << "\n";
+//    cout << '\n';// test output
+    return 0;
+
 }
 
 int merge_sortRecursive(int *items, const int n){
     if (n <= 6) {
-        insertion_sort(items, n);
-        //        for (int z=0; z<n; z++)
-        //            cout << items[z] << " ";
-        //        cout << '\n';
+         insertion_sort(items, n);
+//        for (int z=0; z<n; z++)
+//            cout << items[z] << " ";
+//        cout << '\n';
         return 0;
     }
-    int j,k,temp;
-    if (n%2 != 0) {
-        merge_sortRecursive(items, n/2);
-        merge_sortRecursive(items + n/2, n/2+1);
-        //cout << n<< '\n';
-        j=0, k=n/2;
-        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-            if (items[j] >= items[ k ]) {
-                temp = items[ k ];
-                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                    items[i+1]=items[i];
-                }
-                items[j]=temp;
-                if (k<n-1) // before k could go out of the range
-                    k++;
-                
-            }
-        }
+    else if (n%2 != 0) {
+        merge_sortRecursive(items, n/2+1);
+        merge_sortRecursive(items + n/2 +1, n/2);
         
+        merge (items, n, n/2+1);
+//        for (int z=0; z<n; z++)
+//            cout << items[z] << " ";
+//        cout << '\n';
+
     }
-    else{
+    else {
         merge_sortRecursive(items, n/2);
         merge_sortRecursive(items + n/2, n/2);
-        //cout << n<< '\n';
-        j=0, k=n/2;
-        for (j=0 ; j<n-1; j++){ //  there is also a problem with j's boundary. It was j < n/2-1
-            if (items[j] >= items[ k ]) {
-                temp = items[ k ];
-                for (int i=k-1 ; i>=j; i--){ //i should not equal to n/2-1, which is fixed; i should stop at j
-                    items[i+1]=items[i];
-                }
-                items[j]=temp;
-                if (k<n-1) // before k could go out of the range
-                    k++;
-                //                for (int z=0; z<n; z++)
-                //                    cout << items[z] << " ";
-                //                cout << '\n';// test output
-            }
-        }
+
+        merge (items, n, n/2);
+//                for (int z=0; z<n; z++)
+//                    cout << items[z] << " ";
+//                cout << '\n';
+
         
     }
-    
-    
-    
     return 0;
 }
 
@@ -147,4 +96,77 @@ int merge_sortRecursive(int *items, const int n){
 
 int quick_sort(int *items, const int n) {
 	return 1; // TODO
+}
+
+
+
+// mergehelper
+int merge(int *items, const int n, int k){
+    
+    int j=0,temp, head;
+    
+    if (items[k]>= items[k-1]) {
+        return 0;
+    }
+    else if (items[n-1] <= items [0] ) {
+        if (n%2 == 0) {
+            
+            for (j=0; j<n/2; j++,k++) {
+                temp = items[k];
+                items[k]=items[j];
+                items[j]=temp;
+            }
+        }
+        else {
+            temp=items[k-1];
+            for (j=0; j<n/2; j++,k++) {
+                items[k-1]=items[j];
+                items[j]=items[k];
+            }
+            items[n-1]=temp;
+        }
+        
+        return 0;
+    }
+    
+    else{
+        //cout << n<< '\n';
+        
+        while (j<k && k < n) {
+            if (items[j] > items[ k ]) {
+                head = k;
+                while (items[k] <= items [j] && k<n) {
+                    k++;
+                }
+                exchange(&items[j], head-j, k-head);
+                j= j- head + k;
+//                for (int z=0; z<n; z++)
+//                    cout << items[z] << " ";
+//                cout << '\n';
+            }
+            j++;
+        }
+        
+    }
+    
+    
+    return 0;
+}
+
+void reverse(int *items, int n)
+{
+    int left = 0;
+    int right = n -1;
+    while(left < right)
+    {
+        int temp = items[left];
+        items[left++] = items[right];
+        items[right--] = temp;
+    }
+}
+
+void exchange(int *head, int left, int right){
+    reverse(head, left);
+    reverse(head+left, right);
+    reverse(head, left+right);
 }

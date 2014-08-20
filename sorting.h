@@ -9,7 +9,11 @@ int merge_sort(int *items, const int n);
 
 int merge_sortRecursive(int *items, const int n);
 
-//int merge_merge(int *items, const int n);
+int merge(int *items, const int n,  int k);
+
+void reverse(int *items, int n);
+
+void exchange(int *head, int left, int right);
 
 int quick_sort(int *items, const int n);
 
