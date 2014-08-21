@@ -19,4 +19,8 @@ int* search(int* head, int target, int range);
 
 int quick_sort(int *items, const int n);
 
+int *partition(int *left, int *right);
+
+int quicksort_recursive(int *left, int *right);
+
 #endif // __SORTING_H__

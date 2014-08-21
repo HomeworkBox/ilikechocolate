@@ -92,9 +92,64 @@ bool merge_sortRecursive(int *items, const int n){
 
 
 // Quick Sort:
-
 int quick_sort(int *items, const int n) {
-	return 1; // TODO
+    if (n < 0 || items == NULL) {
+        return 1;
+    }
+    else if (n <= 6) {
+        return insertion_sort(items, n);
+    }
+    else {
+        int * pivot=partition(items, items+n);
+        quicksort_recursive(items, pivot-1);
+        quicksort_recursive(pivot+1, items+n-1);
+        
+    }
+    //    for (int z=0; z<n; z++)
+    //        cout << items[z] << "\n";
+    //    cout << '\n';// test output
+    return 1;
+}
+
+int quicksort_recursive(int *left, int *right){
+    int n=right - left + 1;
+    if (n <= 6) {
+        return insertion_sort(left, n);
+    }
+    else {
+        int * pivot=partition(left, right);
+        quicksort_recursive(left, pivot-1);
+        quicksort_recursive(pivot+1, right);
+        
+    }
+    return 0;
+}
+
+int *partition(int *left, int *right){
+    int *pivot=left + (right - left + 1)/2;
+    int temp1=0,temp2=0, *lp, *rp, judge1, judge2;
+    for (lp = left, judge1=0; lp < pivot; lp++) {
+        if (*lp >= *pivot){
+            temp1 = *lp;
+            judge1 = 1;
+            break;
+        }
+    }
+    for (rp = right,judge2=0; rp > pivot; rp--) {
+        if (*rp <= *pivot){
+            temp2 = *rp;
+            judge2 = 2;
+            break;
+        }
+    }
+    if (judge1+judge2==3) {
+        *lp = *rp;
+        *rp = temp1;
+    }
+    else if(judge1+judge2==1){
+        
+    }
+    return pivot;
 }
 
 
@@ -130,19 +185,6 @@ int merge(int *items, const int n, int k){
 //                cout << items[z] << " ";
             
         }
-//        while (jptr < kptr) {
-//            if (*jptr >= *kptr) {
-//                int temp = *kptr;
-//                for (int* i=kptr-1; i>=jptr; i--) {
-//                    *(i+1) = *i;
-//                }
-//                *jptr = temp;
-//                for (int z=0; z<n; z++)
-//                    cout << items[z] << " ";
-//                cout << '\n';
-//            }
-//            jptr++;
-//        }
     }
     
     return 0;
