@@ -41,7 +41,7 @@ TEST(merge_sort_test, sorting_performance) {
     sorting_performance_test(merge_sort, "merge sort", 50000, 4);//10e+6
 }
 TEST(quick_sort_test, sorting_performance) {
-	sorting_performance_test(quick_sort, "quick sort", 50000, 3);
+	sorting_performance_test(quick_sort, "quick sort", 10e+6, 3);
 }
 
 int main(int argc, char **argv) {

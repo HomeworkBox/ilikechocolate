@@ -23,4 +23,6 @@ int *partition(int *left, int *right);
 
 int quicksort_recursive(int *left, int *right);
 
+void quickSort(int arr[], int left, int right);
+
 #endif // __SORTING_H__
