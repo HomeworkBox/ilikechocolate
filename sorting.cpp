@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "sorting.h"
+#include "experimental.h"
 using namespace std;
 
 
@@ -20,40 +21,106 @@ int insertion_sort(int *items, const int n) {
         //        }
         if (items[i] > items[i+1]) {
             temp = items[i+1];
-            for (j=i; j>=0; j--){
-                if(items[j] > temp){
-                    items[j+1]=items[j];
-                    items[j]=temp;
+            j=i;
+            while ( j>=0 && items[j] > temp){
+                items[j+1]=items[j];
+                j--;
                 }
-            }
+            items[j+1]=temp;
         }
     }
     return 0;
 }
 
 // Merge Sort:
-
+void merge(int* a, int* b, int* c){
+    //    int *left = items;
+    //    int *right = items+n-1;
+    //    int *mid = items+k;
+    //    int n1 = k;
+    //    int n2 = n-k; // bounds
+    //
+    //    if (n1 == 0 || n2 == 0)
+    //        return;
+    //    if (n1 == 1 && n2 == 1) {
+    //        if (*mid < *left){
+    //            int key = *left;
+    //            *left = *right;
+    //            *right = key;
+    //        }
+    //    }
+    //    else {
+    //        int* p, * q;
+    //
+    //        if (n1 <= n2)
+    //            p = search(left, *(q=mid+n2/2), k);
+    //        else
+    //            q = search(mid, *(p=left+n1/2), n-k)-1; // bounds
+    //
+    //        exchange(p, mid, q);
+    //        mid = q-mid+p;
+    //        merge(left, mid-items+1, p-left);
+    //        merge(mid, right - mid+1, q-mid);
+    //    }
+    //    return ;
+    int n1 = b - a;
+    int n2 = c - b;
+    
+    if (n1 == 0 || n2 == 0)
+        return;
+    if (n1 == 1 && n2 == 1)
+    {
+        if (*b < *a) {
+            int key = *a;
+            *a = *b;
+            *b = key;
+        }
+    }
+    else
+    {
+        int* p, * q;
+        
+        if (n1 <= n2)
+            p = search(a, *(q=b+n2/2), b-a);
+        else
+            q = search(b, *(p=a+n1/2), c-b)-1;
+        exchange(p, b, q);
+        b= q-b+p;
+        merge(a, p, b);
+        merge(b, q, c);
+    }
+}
 int merge_sort(int *items, const int n) {
     if (n < 0 || items == NULL) {
         return 1;
     }
+//    int times = n/6;
+//    int remainder = n%6;
+//    
+//    for (int i=0; i<times; i++){
+//        insertion_sort(&items[i*6], 6);
+//    }
+//    insertion_sort(&items[n-remainder-1], remainder); // remainder-1??
+
+    
     else if (n <= 6) {
         insertion_sort(items, n);
     }
     else if (n%2 != 0) {
         merge_sortRecursive(items, n/2+1);
         merge_sortRecursive(items + n/2+1, n/2);
-        merge (items, n, n/2+1);
+        merge (items, items+n/2, items+n-1);
     }
     else {
         merge_sortRecursive(items, n/2);
         merge_sortRecursive(items + n/2, n/2);
-        merge (items, n, n/2);
+        merge (items, items+ n/2, items+n-1);
 
     }
 //    for (int z=0; z<n; z++)
 //        cout << items[z] << "\n";
 //    cout << '\n';// test output
+    //mergesort2(items, n);
     return 0;
 
 }
@@ -70,20 +137,20 @@ bool merge_sortRecursive(int *items, const int n){
         merge_sortRecursive(items, n/2+1);
         merge_sortRecursive(items + n/2 +1, n/2);
         
-        merge (items, n, n/2+1);
-//        for (int z=0; z<n; z++)
-//            cout << items[z] << " ";
-//        cout << '\n';
+        merge (items, items+n/2+1, items+n-1);
+        for (int z=0; z<n; z++)
+            cout << items[z] << " ";
+        cout << '\n';
 
     }
     else {
         merge_sortRecursive(items, n/2);
         merge_sortRecursive(items + n/2, n/2);
 
-        merge (items, n, n/2);
-//                for (int z=0; z<n; z++)
-//                    cout << items[z] << " ";
-//                cout << '\n';
+        merge (items, items+ n/2, items+n-1);
+                for (int z=0; z<n; z++)
+                    cout  << items[z] << " ";
+                cout << '\n';
 
         
     }
@@ -112,32 +179,6 @@ int quick_sort(int *items, const int n) {
     return 0;
 }
 
-void quickSort(int arr[], int left, int right) {
-    int i = left, j = right;
-    int tmp;
-    int pivot = arr[(left + right) / 2];
-    
-    /* partition */
-    while (i <= j) {
-        while (arr[i] < pivot)
-            i++;
-        while (arr[j] > pivot)
-            j--;
-        if (i <= j) {
-            tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
-            i++;
-            j--;
-        }
-    };
-    
-    /* recursion */
-    if (left < j)
-        quickSort(arr, left, j);
-    if (i < right)
-        quickSort(arr, i, right);
-}
 
 
 int quicksort_recursive(int *left, int *right){
@@ -156,8 +197,7 @@ int quicksort_recursive(int *left, int *right){
 
 int *partition(int *left, int *right){
     int *pivot=left + (right - left )/2;
-    //int *l=left, *r=right;
-    int temp1=0,temp2=0, *lp=left, *rp=right;
+    int temp1=0, *lp=left, *rp=right;
     while (lp < rp) {
         while (*lp < *pivot) {
             lp++;
@@ -189,40 +229,6 @@ int *partition(int *left, int *right){
 
 
 // mergehelper
-int merge(int *items, const int n, int k){
-    
-    if (items[k]>= items[k-1]) {
-        return 0;
-    }
-    else if (items[n-1] <= items [0] ) {
-        exchange(&items[0], &items[k], &items[n-1]);
-        return 0;
-    }
-    
-    else{
-        //cout << n<< '\n';
-        int *kptr=&items[k], *jptr=&items[0];
-        while (kptr < items + n) {
-            
-            int *locationA = search(jptr, *kptr, kptr - jptr);
-            int *locationB = search(kptr, *locationA, n-k)-1;
-//            cout << '\n'<< "location a "<< locationA-items<<" ;locationB "<< locationB-items<<"\n";
-
-            if (locationB <= locationA)
-                break;
-                        exchange( locationA, kptr, locationB);
-            jptr = jptr - kptr + locationB +1;
-            k+= locationB +1 - kptr;
-            kptr = locationB+1;
-            
-//            for (int z=0; z<n; z++)
-//                cout << items[z] << " ";
-            
-        }
-    }
-    
-    return 0;
-}
 
 void reverse(int *items, int* n)
 {
@@ -275,3 +281,5 @@ int* search(int* head, int target, int range){
     }
     return head;
 }
+
+
