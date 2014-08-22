@@ -35,13 +35,13 @@ void sorting_performance_test(sorter_t sorter, const char *sorter_name, const in
 }
 
 TEST(insertion_sort_test, sorting_performance) {
-	sorting_performance_test(insertion_sort, "insertion sort", 50000, 2);
+	sorting_performance_test(insertion_sort, "insertion sort", 50000, 2);//50000
 }
 TEST(merge_sort_test, sorting_performance) {
-    sorting_performance_test(merge_sort, "merge sort", 4*10e+4, 4);
+    sorting_performance_test(merge_sort, "merge sort", 50000, 4);//10e+6
 }
 TEST(quick_sort_test, sorting_performance) {
-	sorting_performance_test(quick_sort, "quick sort", 10e+6, 3);
+	sorting_performance_test(quick_sort, "quick sort", 50000, 3);
 }
 
 int main(int argc, char **argv) {

@@ -100,7 +100,7 @@ int quick_sort(int *items, const int n) {
         return insertion_sort(items, n);
     }
     else {
-        int * pivot=partition(items, items+n);
+        int * pivot=partition(items, items+n-1);
         quicksort_recursive(items, pivot-1);
         quicksort_recursive(pivot+1, items+n-1);
         
@@ -108,7 +108,7 @@ int quick_sort(int *items, const int n) {
     //    for (int z=0; z<n; z++)
     //        cout << items[z] << "\n";
     //    cout << '\n';// test output
-    return 1;
+    return 0;
 }
 
 int quicksort_recursive(int *left, int *right){
@@ -126,29 +126,48 @@ int quicksort_recursive(int *left, int *right){
 }
 
 int *partition(int *left, int *right){
-    int *pivot=left + (right - left + 1)/2;
-    int temp1=0,temp2=0, *lp, *rp, judge1, judge2;
-    for (lp = left, judge1=0; lp < pivot; lp++) {
-        if (*lp >= *pivot){
-            temp1 = *lp;
-            judge1 = 1;
-            break;
+    int *pivot=left + (right - left )/2;
+    //int *l=left, *r=right;
+    int temp1=0,temp2=0, *lp=left, *rp=right;
+    do {
+        int judge1=0, judge2=0;
+        while (lp < pivot) {
+            if (*lp >= *pivot){
+                temp1 = *lp;
+                judge1 = 1;
+                break;
+            }
+            lp++;
         }
-    }
-    for (rp = right,judge2=0; rp > pivot; rp--) {
-        if (*rp <= *pivot){
-            temp2 = *rp;
-            judge2 = 2;
-            break;
+        while (rp > pivot) {
+            if (*rp < *pivot){
+                temp2 = *rp;
+                judge2 = 2;
+                break;
+            }
+            rp--;
         }
-    }
-    if (judge1+judge2==3) {
-        *lp = *rp;
-        *rp = temp1;
-    }
-    else if(judge1+judge2==1){
-        
-    }
+        if (judge1+judge2==3) {
+            *lp = *rp;
+            *rp = temp1;
+       
+        }
+        else if(judge1+judge2==1){
+            *lp = *pivot;
+            *pivot = temp1;
+            pivot = lp;
+        }
+        else if(judge1+judge2==2){
+            *rp = *pivot;
+            *pivot = temp2;
+            pivot = rp;
+        }
+        else
+            break;
+//        for (int z=0; z<(right-left+1); z++)
+//            cout << left[z] << " ";
+//        cout << '\n'<<"pivot is "<< *pivot << '\n';
+    } while (pivot!=lp || pivot!=rp);
     return pivot;
 }
 
