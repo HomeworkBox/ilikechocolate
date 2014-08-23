@@ -1,79 +1,100 @@
-// Tyler Weimin Ouyang 2014-08-15
-// cs32 pa2
+//
+//  sorting.cpp
+//  cs 32 pa2x
+//
+//  Created by FT: Felicia Truong & Tyler Weimin Ouyang on 8/16/14.
+//  Copyright (c) 2014 FT: Felicia Truong & Tyler Weimin Ouyang. All rights reserved.
+//
+
 
 #include <iostream>
 #include "sorting.h"
-#include "experimental.h"
 using namespace std;
-
 
 // Insertion Sort:
 int insertion_sort(int *items, const int n) {
-    
     if (n < 0 || items == NULL) {
         return 1;
     }
     int temp, i, j;
     int nn=n-1;
     for (i=0; i<nn; i++){
-        //        if (typeid(items[i]) != typeid(int())) {
-        //            return 1;
-        //        }
         if (items[i] > items[i+1]) {
             temp = items[i+1];
             j=i;
             while ( j>=0 && items[j] > temp){
                 items[j+1]=items[j];
                 j--;
-                }
+            }
             items[j+1]=temp;
         }
     }
     return 0;
 }
 
-// Merge Sort:
-void merge(int* a, int* b, int* c){
-    //    int *left = items;
-    //    int *right = items+n-1;
-    //    int *mid = items+k;
-    //    int n1 = k;
-    //    int n2 = n-k; // bounds
-    //
-    //    if (n1 == 0 || n2 == 0)
-    //        return;
-    //    if (n1 == 1 && n2 == 1) {
-    //        if (*mid < *left){
-    //            int key = *left;
-    //            *left = *right;
-    //            *right = key;
-    //        }
-    //    }
-    //    else {
-    //        int* p, * q;
-    //
-    //        if (n1 <= n2)
-    //            p = search(left, *(q=mid+n2/2), k);
-    //        else
-    //            q = search(mid, *(p=left+n1/2), n-k)-1; // bounds
-    //
-    //        exchange(p, mid, q);
-    //        mid = q-mid+p;
-    //        merge(left, mid-items+1, p-left);
-    //        merge(mid, right - mid+1, q-mid);
-    //    }
-    //    return ;
-    int n1 = b - a;
-    int n2 = c - b;
+int merge_sort(int *items, const int n) {
+    if (n < 0 || items == NULL) {
+        return 1;
+    }
+    
+    
+    else if (n <= 6) {
+        insertion_sort(items, n);
+    }
+    else
+    {
+        int half = n/2;
+        merge_sortRecursive(items, half);
+        merge_sortRecursive(items+half, n-half);
+        merge(items, items+half, items+n);
+    }
+    
+//    else if (n%2 != 0) {
+//        merge_sortRecursive(items, n/2+1);
+//        merge_sortRecursive(items + n/2+1, n/2);
+//        merge (items, items+n/2+1, items+n-1);
+//    }
+//    else {
+//        merge_sortRecursive(items, n/2);
+//        merge_sortRecursive(items + n/2, n/2);
+//        merge (items, items+ n/2, items+n-1);
+//        
+//    }
+//    for (int z=0; z<n; z++)
+//        cout << items[z] << "\n";
+//    cout << '\n';// test output
+//    mergesort2(items, n);
+    return 0;
+    
+}
+
+bool merge_sortRecursive(int *items, const int n){
+    if (n <= 6) {
+        insertion_sort(items, n);
+        return 0;
+    }
+    else
+    {
+        int h = n/2;
+        merge_sortRecursive(items, h);
+        merge_sortRecursive(items+h, n-h);
+        merge(items, items+h, items+n);
+    }    return 0;
+}
+
+void merge(int* head, int* mid, int* tail){
+    
+    int n1 = mid - head;
+    int n2 = tail - mid;
     
     if (n1 == 0 || n2 == 0)
         return;
     if (n1 == 1 && n2 == 1)
     {
-        if (*b < *a) {
-            int key = *a;
-            *a = *b;
-            *b = key;
+        if (*mid < *head) {
+            int key = *head;
+            *head = *mid;
+            *mid = key;
         }
     }
     else
@@ -81,86 +102,21 @@ void merge(int* a, int* b, int* c){
         int* p, * q;
         
         if (n1 <= n2)
-            p = search(a, *(q=b+n2/2), b-a);
+            p = right_search(head, mid, *(q = mid+n2/2));
         else
-            q = search(b, *(p=a+n1/2), c-b)-1;
-        exchange(p, b, q);
-        b= q-b+p;
-        merge(a, p, b);
-        merge(b, q, c);
-    }
-}
-int merge_sort(int *items, const int n) {
-    if (n < 0 || items == NULL) {
-        return 1;
-    }
-//    int times = n/6;
-//    int remainder = n%6;
-//    
-//    for (int i=0; i<times; i++){
-//        insertion_sort(&items[i*6], 6);
-//    }
-//    insertion_sort(&items[n-remainder-1], remainder); // remainder-1??
-
-    
-    else if (n <= 6) {
-        insertion_sort(items, n);
-    }
-    else if (n%2 != 0) {
-        merge_sortRecursive(items, n/2+1);
-        merge_sortRecursive(items + n/2+1, n/2);
-        merge (items, items+n/2, items+n-1);
-    }
-    else {
-        merge_sortRecursive(items, n/2);
-        merge_sortRecursive(items + n/2, n/2);
-        merge (items, items+ n/2, items+n-1);
-
-    }
-//    for (int z=0; z<n; z++)
-//        cout << items[z] << "\n";
-//    cout << '\n';// test output
-    //mergesort2(items, n);
-    return 0;
-
-}
-
-bool merge_sortRecursive(int *items, const int n){
-    if (n <= 6) {
-         insertion_sort(items, n);
-//        for (int z=0; z<n; z++)
-//            cout << items[z] << " ";
-//        cout << '\n';
-        return 0;
-    }
-    else if (n%2 != 0) {
-        merge_sortRecursive(items, n/2+1);
-        merge_sortRecursive(items + n/2 +1, n/2);
+            q = left_search(mid, tail, *(p = head+n1/2));
         
-        merge (items, items+n/2+1, items+n-1);
-        for (int z=0; z<n; z++)
-            cout << items[z] << " ";
-        cout << '\n';
-
+        exchange(p, mid, q);
+        mid = q-mid+p;
+        merge(head, p, mid);
+        merge(mid, q, tail);
     }
-    else {
-        merge_sortRecursive(items, n/2);
-        merge_sortRecursive(items + n/2, n/2);
-
-        merge (items, items+ n/2, items+n-1);
-                for (int z=0; z<n; z++)
-                    cout  << items[z] << " ";
-                cout << '\n';
-
-        
-    }
-    return 0;
 }
+
 
 
 // Quick Sort:
 int quick_sort(int *items, const int n) {
-//    quickSort(items, 0 , n-1);
     if (n < 0 || items == NULL) {
         return 1;
     }
@@ -173,13 +129,8 @@ int quick_sort(int *items, const int n) {
         quicksort_recursive(pivot+1, items+n-1);
         
     }
-    //    for (int z=0; z<n; z++)
-    //        cout << items[z] << "\n";
-    //    cout << '\n';// test output
     return 0;
 }
-
-
 
 int quicksort_recursive(int *left, int *right){
     int n=right - left + 1;
@@ -194,6 +145,8 @@ int quicksort_recursive(int *left, int *right){
     }
     return 0;
 }
+
+//helpers
 
 int *partition(int *left, int *right){
     int *pivot=left + (right - left )/2;
@@ -218,22 +171,14 @@ int *partition(int *left, int *right){
                 rp--;
             }
         }
-        
-        //        for (int z=0; z<(right-left+1); z++)
-//            cout << left[z] << " ";
-//        cout << '\n'<<"pivot is "<< *pivot << '\n';
     }
     return pivot;
 }
 
-
-
-// mergehelper
-
-void reverse(int *items, int* n)
+void reverse(int* a, int* b)
 {
-    int *left = items;
-    int *right = n ;
+    int *left = a;
+    int *right = b-1;
     while(left < right)
     {
         int temp = *left;
@@ -245,13 +190,37 @@ void reverse(int *items, int* n)
 }
 
 void exchange(int *head, int* mid, int* right){
-    reverse(head, mid-1);
+    if (head==mid || mid == right) {
+        return;
+    }
+    reverse(head, mid);
     reverse(mid, right);
     reverse(head, right);
 }
 
-int* search(int* head, int target, int range){
-    if (range <= 10 ) {
+int *left_search(int* head, int* tail, const int target){
+    int i;
+    for ( i = tail-head; i != 0; i /= 2 )
+    {
+        int* mid = head + i/2;
+        if (*mid < target)
+            head = mid + 1, i--;
+    }
+    return head;
+}
+int *right_search(int* head, int* tail, const int target) {
+    int i;
+    for ( i = tail-head; i != 0; i /= 2 )
+    {
+        int* mid = head + i/2;
+        if (*mid <= target)
+            head = mid + 1, i--;
+    }
+    return head;
+}
+
+/*
+     int* search(int* head, int target, int range){     if (range <= 10 ) {
         if (target<head[0])
             return head;
         int i;
@@ -279,7 +248,9 @@ int* search(int* head, int target, int range){
         return head+i;
         
     }
-    return head;
-}
+    return head; 
+     }
+     */
+
 
 

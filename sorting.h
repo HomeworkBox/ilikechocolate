@@ -1,3 +1,11 @@
+//
+//  sorting.h
+//  cs32 pa2x
+//
+//  Created by FT: Felicia Truong & Tyler Weimin Ouyang on 8/16/14.
+//  Copyright (c) 2014 FT: Felicia Truong & Tyler Weimin Ouyang. All rights reserved.
+//
+
 #ifndef __SORTING_H__
 #define __SORTING_H__
 
@@ -17,7 +25,9 @@ void reverse(int *items, int* n);
 
 void exchange(int *head, int* mid, int* right);
 
-int* search(int* head, int target, int range);
+int *right_search(int* head, int* tail, const int target);
+
+int *left_search(int* head, int* tail, const int target);
 
 int quick_sort(int *items, const int n);
 
