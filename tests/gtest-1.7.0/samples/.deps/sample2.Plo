@@ -1,0 +1,24 @@
+samples/sample2.lo samples/sample2.o: samples/sample2.cc \
+  samples/sample2.h /opt/include/string.h /opt/include/features.h \
+  /opt/include/bits/predefs.h /opt/include/sys/cdefs.h \
+  /opt/include/bits/wordsize.h /opt/include/gnu/stubs.h \
+  /opt/lib/gcc/arm-none-linux-gnueabi/4.2.3/include/stddef.h \
+  /opt/include/xlocale.h
+
+samples/sample2.h:
+
+/opt/include/string.h:
+
+/opt/include/features.h:
+
+/opt/include/bits/predefs.h:
+
+/opt/include/sys/cdefs.h:
+
+/opt/include/bits/wordsize.h:
+
+/opt/include/gnu/stubs.h:
+
+/opt/lib/gcc/arm-none-linux-gnueabi/4.2.3/include/stddef.h:
+
+/opt/include/xlocale.h:
